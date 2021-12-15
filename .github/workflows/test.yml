@@ -4,7 +4,8 @@ on:
     branches:
       - main
 concurrency:
-  group: test
+  group: ${{ github.workflow }}
+  
 jobs:
   say_hello:
     runs-on: ubuntu-latest
