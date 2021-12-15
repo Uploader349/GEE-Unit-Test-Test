@@ -3,11 +3,17 @@ on:
   push:
     branches:
       - main
+  pull-request:
+
 concurrency:
   group: ${{ github.workflow }}
-  
+
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 2m
+      - name: Test
+        if: |
+          github.repository_owner == 'wpilibsuite' &&
+          github.ref == 'refs/heads/main'
+        run: sleep 2m
