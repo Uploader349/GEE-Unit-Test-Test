@@ -8,14 +8,12 @@ on:
       - main
 
 concurrency: 
-  group: ${{ github.ref }}
+  group: ${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
   say_hello:
-    if: |
-        github.repository_owner == 'Piphi5' &&
-        github.ref != 'refs/heads/main'
+    if: github.repository_owner == 'Piphi5'
     runs-on: ubuntu-latest
     steps:
       - name: Test
