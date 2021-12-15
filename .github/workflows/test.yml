@@ -7,15 +7,16 @@ on:
     branches:
       - main
 
-concurrency:
-  group: ${{ github.workflow }}
+concurrency: 
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   say_hello:
+    if: |
+        github.repository_owner == 'Piphi5' &&
+        github.ref != 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        if: |
-          github.repository_owner == 'wpilibsuite' &&
-          github.ref == 'refs/heads/main'
         run: sleep 2m
