@@ -16,6 +16,6 @@ jobs:
     steps:
       - name: Test
         if: |
-          github.repository_owner == 'wpilibsuite' &&
+          github.repository_owner == 'Piphi5' &&
           github.ref == 'refs/heads/main'
         run: sleep 2m
