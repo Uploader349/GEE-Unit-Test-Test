@@ -7,8 +7,9 @@ on:
     branches:
       - main
 
-concurrency:
-  group: ${{ github.workflow }}
+concurrency: 
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   say_hello:
