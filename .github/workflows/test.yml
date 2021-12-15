@@ -9,7 +9,6 @@ on:
 
 concurrency: 
   group: ${{ github.workflow }}
-  cancel-in-progress: true
 
 jobs:
   say_hello:
