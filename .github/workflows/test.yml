@@ -1,13 +1,20 @@
 name: Manually triggered workflow
 on:
   workflow_dispatch
+  pull_request_target
 
 concurrency: 
   group: ${{ github.workflow }}
 
 jobs:
-  say_hello:
+  run_main:
     if: github.repository_owner == 'Piphi5'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: sleep 2m
+  run_pr:
+    if: (github.event_name = "pull_request" && github.base_ref)
     runs-on: ubuntu-latest
     steps:
       - name: Test
