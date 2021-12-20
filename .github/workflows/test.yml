@@ -23,6 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: pull/${{ github.event.inputs.id }}/head
+          ref: refs/pull/${{ github.event.inputs.id }}/head
       - name: Test
         run: sleep 2m
