@@ -1,0 +1,6 @@
+name: gee-test
+channels:
+  - defaults
+dependencies:
+  - earthengine-api
+prefix: C:\Users\piphi\anaconda3\envs\gee-test
