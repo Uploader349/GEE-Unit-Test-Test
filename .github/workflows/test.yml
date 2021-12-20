@@ -19,15 +19,15 @@ jobs:
       - name: Set up Python 
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.9
       - name: Install dependencies
         run: |
           # $CONDA is an environment variable pointing to the root of the miniconda directory
           $CONDA/bin/conda env update --file environment.yml --name base
       - name: Setup Earth Engine credentials
         run: |
-          python "EE Testing/create_ee_json.py" ${{ secrets.EE_JSON }}
-          python "EE Testing/test.py"
+          $CONDA/bin/python "EE Testing/create_ee_json.py" ${{ secrets.EE_JSON }}
+          $CONDA/bin/python "EE Testing/test.py"
   run_pr:
     if: github.repository_owner == 'Piphi5' && github.event.inputs.id != 'main' 
     runs-on: ubuntu-latest
@@ -38,12 +38,12 @@ jobs:
       - name: Set up Python 
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.9
       - name: Install dependencies
         run: |
           # $CONDA is an environment variable pointing to the root of the miniconda directory
           $CONDA/bin/conda env update --file environment.yml --name base
       - name: Setup Earth Engine credentials
         run: |
-          python "EE Testing/create_ee_json.py" ${{ secrets.EE_JSON }}
-          python "EE Testing/test.py"
+          $CONDA/bin/python "EE Testing/create_ee_json.py" ${{ secrets.EE_JSON }}
+          $CONDA/bin/python "EE Testing/test.py"
