@@ -17,7 +17,7 @@ jobs:
       - name: Test
         run: sleep 2m
   run_pr:
-    if: (github.event_name = "pull_request" && github.base_ref)
+    if: (github.event_name == "pull_request" && github.base_ref)
     runs-on: ubuntu-latest
     steps:
       - name: Test
