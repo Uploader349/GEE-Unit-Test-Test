@@ -1,14 +1,28 @@
 name: Manually triggered workflow
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      id:
+        description: 'PR ID'
+        required: true
+        default: 'main'
 
 concurrency: 
   group: ${{ github.workflow }}
 
 jobs:
-  say_hello:
-    if: github.repository_owner == 'Piphi5'
+  run_main:
+    if: github.event.inputs.id == 'main'
     runs-on: ubuntu-latest
     steps:
+      - name: Test
+        run: sleep 2m
+  run_pr:
+    if: github.event.inputs.id != 'main' 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.inputs.id }}/head
       - name: Test
         run: sleep 2m
