@@ -12,13 +12,13 @@ concurrency:
 
 jobs:
   run_main:
-    if: github.event.inputs.id == "main" 
+    if: github.event.inputs.id == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Test
         run: sleep 2m
   run_pr:
-    if: github.event.inputs.id != "main" 
+    if: github.event.inputs.id != 'main' 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
