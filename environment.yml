@@ -1,0 +1,7 @@
+name: gee-test
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - earthengine-api
+prefix: C:\Users\piphi\anaconda3\envs\gee-test
